@@ -63,3 +63,16 @@ GET : Get all the issued books
 
 ## /books/issued/withFine
 GET: Get all issued books with their fine 
+
+
+
+
+
+
+
+
+for terminal
+## npm init
+## npm i nodemon --save dev 
+## npm i express
+## npm run dev
