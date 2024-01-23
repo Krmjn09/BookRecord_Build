@@ -74,5 +74,5 @@ GET: Get all issued books with their fine
 for terminal
 ## npm init
 ## npm i nodemon --save dev 
-## npm i express
+## npm i nodemon --save dev 
 ## npm run dev
