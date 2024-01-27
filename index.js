@@ -28,7 +28,6 @@ app.get("/users", (req, res) => {
   });
 });
 
-// http://localhost:8081/users/:4
 /*
 Route: /users/:id 
 Method: GET
@@ -86,6 +85,59 @@ app.post("/users", (req, res) => {
     message: "user added successfuly",
     data: users,
   });
+});
+
+/*
+Route: /users/:id
+Method: PUT
+Description: Updating a user by their id 
+Access: Public
+Parameter: ID
+*/
+app.put("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const { data } = req.body;
+
+  const user = users.find((each) => each.id === id);
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User Doesn't Exist !!",
+    });
+  }
+  const updateUserData = users.map((each) => {
+    if (each.id === id) {
+      return {
+        ...each,
+        ...data,
+      };
+    }
+    return each;
+  });
+  return res.status(200).json({
+    success: true,
+    message: "User Updated !!",
+    data: updateUserData,
+  });
+});
+
+/*
+Route: /users/:id
+Method: DELETE
+Description: DELETING a user by their id 
+Access: Public
+Parameter: ID
+*/
+
+app.delete("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const user = users.find((each) => each.id === id);
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User Doesn't Exist !!",
+    });
+  }
 });
 
 app.get("*", (req, res) => {
