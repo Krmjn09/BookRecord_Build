@@ -74,3 +74,11 @@ for terminal
 ## npm i express
 
 ## npm run dev
+
+const express = require("express");
+
+const router = express();
+
+const port = 3000;
+
+router.use(express.json());
